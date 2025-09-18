@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crypto Portfolio</title>
+    <style>
+        body{font-family: Arial, sans-serif; max-width:800px;margin:20px auto;padding:10px}
+        input,button{padding:8px;margin:4px}
+        table{width:100%;border-collapse:collapse;margin-top:12px}
+        th,td{border:1px solid #ddd;padding:8px;text-align:left}
+    </style>
+</head>
+<body>
+<h1>Крипто-портфолио</h1>
+<form id="addForm">
+    <label>Симбол (пример BTC): <input id="symbol" required /></label>
+    <label>Колку USD: <input id="amount" type="number" step="0.01" required /></label>
+    <button type="submit">Додади</button>
+</form>
+
+
+<h2>Листа на крипто</h2>
+<div id="total"></div>
+<table id="list">
+    <thead><tr><th>ID</th><th>Симбол</th><th>Amount (USD)</th><th>Создадено</th><th>Акции</th></tr></thead>
+    <tbody></tbody>
+</table>
+
+
+<script src="/app.js"></script>
+</body>
+</html>
