@@ -35,3 +35,5 @@ jobs:
           context: ./frontend
           push: true
           tags: fichofinki/crypto-frontend:latest
+
+          # Zdravo
