@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-backend
+  namespace: crypto-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crypto-backend
+  template:
+    metadata:
+      labels:
+        app: crypto-backend
+    spec:
+      containers:
+        - name: backend
+          image: fichofinki/crypto-backend:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: DATABASE_HOST
+              value: postgres
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_PORT
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_DB
